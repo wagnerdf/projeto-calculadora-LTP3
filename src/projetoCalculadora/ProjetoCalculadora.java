@@ -90,7 +90,7 @@ public class ProjetoCalculadora extends JFrame{
 			
 	          public void actionPerformed (ActionEvent Evento){
 	        	  
-	        	  ProjetoCalculadora.this.setVisible(false);
+	        	  //ProjetoCalculadora.this.setVisible(false);
 	        	  
 	        	  NumeroRomano numeroRomano = new NumeroRomano();
 			}
@@ -99,17 +99,15 @@ public class ProjetoCalculadora extends JFrame{
 	miTabuada.addActionListener(
 	       new ActionListener(){
 	    	   public void actionPerformed(ActionEvent Evento){
-	    		   Tabuada tabuadaOK = new Tabuada();  
+	    		   
+	    		   //ProjetoCalculadora.this.setVisible(false);
+	    		   
+	    		   Tabuada tabuadaOK = new Tabuada();
+	    		   
 	    		    
 	    	   }
 	       }
 	);
-	
-	
-	
-	
-	
-	
 	
 	
 //Adicionar evento a itens de menu (Sobre :));
@@ -404,8 +402,6 @@ public class ProjetoCalculadora extends JFrame{
 //Iniciliação do programa (main)
 	public static void main(String []args){
 		ProjetoCalculadora calculadoraEducacional = new ProjetoCalculadora();
-		 
-		
 		
 	}
 }

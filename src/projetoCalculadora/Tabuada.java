@@ -1,41 +1,41 @@
 package projetoCalculadora;
 
 
-import javax.swing.*;   
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.*;   
-import java.awt.event.*;   
-  
-public class Tabuada extends JFrame {   
-   private JComboBox comboTabuada;
-   private JComboBox comboOperador;
-   private JButton botao; 
-   private JTextArea areaTexto1;
-   int i;
-   
-   AritimeticaTabuada tabuadaA = new AritimeticaTabuada();
-      
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+public class Tabuada extends JFrame {
+	private JComboBox<String> comboTabuada;
+	private JComboBox<String> comboOperador;
+	private JButton botao;
+	private JTextArea areaTexto1;
+	int i;
+
+	AritimeticaTabuada tabuadaA = new AritimeticaTabuada();
+
 // public class Tabuada() {   
-  //   new ExemploCombo("");   
-    //}   
+	// new ExemploCombo("");
+	// }
 
-   public Tabuada() {   
-	   this.setTitle("MODULO - TABUADA");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    this.setResizable(false);
-	    this.setBounds(450, 250, 250, 300);
+	public Tabuada() { 
+	    this.setTitle("MODULO - TABUADA");
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setResizable(false);
+	    this.setBounds(450, 250, 250, 310);
 	    Container c = getContentPane();
 	    c.setLayout(new FlowLayout());
 	   
-	   
-	   
-      //Container contentPane = this.getContentPane();   
-         
-      //JPanel painel = new JPanel();   
-         
-      comboTabuada = new JComboBox();
-      
-         
+
+      comboTabuada = new JComboBox<String>();
+       
       comboTabuada.addItem("1");   
       comboTabuada.addItem("2");   
       comboTabuada.addItem("3");   
@@ -45,47 +45,48 @@ public class Tabuada extends JFrame {
       comboTabuada.addItem("7");
       comboTabuada.addItem("8");
       comboTabuada.addItem("9");
+      comboTabuada.addItem("10");
       
-      comboOperador = new JComboBox();
+      comboOperador = new JComboBox<String>();
       
       comboOperador.addItem("+");
       comboOperador.addItem("-");
       comboOperador.addItem("/");
       comboOperador.addItem("*");
       
+      AritimeticaTabuada tabuada = new AritimeticaTabuada();
+      
       botao = new JButton("Clique");   
       botao.addActionListener(new ActionListener() {   
-         public void actionPerformed(ActionEvent e) {   
-        	 
-        	String operador = String.valueOf(comboOperador.getSelectedItem());
-       	    int op = Integer.parseInt((String) comboTabuada.getSelectedItem()); 
-       	 
-       	 if (operador == "+"){
-       		//JOptionPane.showInputDialog("Valor "+op+" Operador "+operador);
-       		areaTexto1.setText("           TABUADA  -  ADIÇÂO\n  --------------------------------------------\n"); 
-       		areaTexto1.append(tabuadaA.soma(op));  
-       		//areaTexto1.setText("   --------------------------------------------");
-       		 
-       	 }
-       	if (operador == "-"){
-       		areaTexto1.setText("           TABUADA  -  SUBTRAÇÃO\n  --------------------------------------------\n"); 
-       		
-       	 }
-       	if (operador == "*"){
-       		areaTexto1.setText("   TABUADA  -  MULTIPLICAÇÂO\n  --------------------------------------------\n");  
-       		areaTexto1.append(tabuadaA.multiplica(op));  
-       	 }
-       	if (operador == "/"){
-       		areaTexto1.setText("           TABUADA  -  DIVISÃO\n  --------------------------------------------\n"); 
-       		
-       	}
-       	
-            
-      }   
+      
+			public void actionPerformed(ActionEvent e) {
+
+				String operador = String.valueOf(comboOperador.getSelectedItem());
+				int op = Integer.parseInt((String) comboTabuada.getSelectedItem());
+				
+				
+				if (operador == "+") {
+					areaTexto1.setText("           TABUADA  -  ADIÇÂO\n  --------------------------------------------\n");
+					areaTexto1.append(tabuada.soma(op));
+				}
+				if (operador == "-") {
+					areaTexto1.setText("        TABUADA  -  SUBITRAÇÃO\n  --------------------------------------------\n");
+					areaTexto1.append(tabuada.subtracao(op));
+				}
+				if (operador == "/") {
+					areaTexto1.setText("           TABUADA  -  DIVISÃO\n  --------------------------------------------\n");
+					areaTexto1.append(tabuada.divisao(op));
+				}
+				if (operador == "*") {
+					areaTexto1.setText("   TABUADA  -  MULTIPLICAÇÃO\n  --------------------------------------------\n");
+					areaTexto1.append(tabuada.multiplicacao(op));
+				}
+
+			}
     });   
 
 //    configura a areaTexto1 com 13 linhas e 15 colunas vis´?veis
-      areaTexto1 = new JTextArea(15, 17);
+      areaTexto1 = new JTextArea(14, 18);
       areaTexto1.setEditable( false );
      
       
@@ -94,11 +95,10 @@ public class Tabuada extends JFrame {
       c.add(botao); 
       c.add(areaTexto1);
     
-      //contentPane.add(painel, BorderLayout.NORTH);   
-            
-      //this. pack();
-      
       this.setVisible(true);   
-   }      
+   }
+
+	
+  
 }  
 
