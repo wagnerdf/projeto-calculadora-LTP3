@@ -121,7 +121,7 @@ public class ProjetoCalculadora extends JFrame{
 					   "Disciplina: LTP3\n\n" +
 					   "Projecto: Calculadora Educacional\n" +
 					   "Aluno: Wagner Andrade\n\n\n" +
-					   "Brasília, XX/XX/XXXX - By LORD_DF®");
+					   "Brasília, XX/XX/XXXX - By WAGNERDF®");
 		   }
 		   
 		   

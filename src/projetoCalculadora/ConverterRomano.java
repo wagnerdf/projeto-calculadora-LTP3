@@ -13,11 +13,11 @@ public class ConverterRomano {
 		
 	if (n<1){
 		JOptionPane.showMessageDialog(null,"O numero "+n+" invalido, informe um numero POSITIVO.");
-	    return "Nş "+n+" Invalido.";
+	    return "Nº "+n+" Invalido.";
 	}
 	if (n>3999){
 		JOptionPane.showMessageDialog(null,"O numero "+n+" invalido, Informe um numero menor que 4000.");
-	    return "Nş "+n+" Invalido.";
+	    return "Nº "+n+" Invalido.";
 	}
 		
 		for(i=0;i<arrayNumeros.length;i++){

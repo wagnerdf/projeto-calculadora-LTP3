@@ -21,65 +21,63 @@ public class NumeroRomano extends JFrame{
 	 private JLabel labelRomano3;
 	 private JTextField romanoResultadoTextField;
 	 private JTextField romanoTextField;
-	 private JButton botaoVoltar;
+	 private JButton botaoSair;
 	 private JButton botaoLimpar;
 	 private JButton botaoRomano;
 	 
 	 ConverterRomano converter = new ConverterRomano();
 	  
 	 public NumeroRomano(){
-	   this.setTitle("Projeto LTP3");
-	   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   this.setTitle("Calculadora números romanos");
+	   this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	   this.setResizable(false);
 	   
 	   this.setBounds(450, 250, 200, 150);
 	   Container c = getContentPane();
 	   c.setLayout(new FlowLayout());
-	   	  
-	  botaoVoltar = new JButton("Voltar");
-	  botaoVoltar.addActionListener(new ActionListener(){
 	   
-	   public void actionPerformed (ActionEvent Evento){
-	       
-		   
-		   NumeroRomano.this.setVisible(false);
-		   //super.CalculadoraEducacional.this.setVisible(true);
-		   
-		   //System.exit(0);
+//Adicionando botão sair	   	  
+	  botaoSair = new JButton("Sair");
+	  botaoSair.addActionListener(new ActionListener(){
+	   
+		  @Override
+			public void actionPerformed(ActionEvent Evento) {
+			    NumeroRomano.this.dispose(); //Fecha somente o formulario NumeroRomano sem fechar o formulário principal. 
+				
 	   }
 	  });
-	  
+//Adicionando botão limpar	
 	  botaoLimpar = new JButton("Limpar");
 	  botaoLimpar.addActionListener(new ActionListener(){
 	   
-	   public void actionPerformed (ActionEvent Evento){
-	    romanoTextField.setText("");
-	    romanoResultadoTextField.setText("");
+		  @Override
+			public void actionPerformed(ActionEvent Evento) {
+				romanoTextField.setText("");
+				romanoResultadoTextField.setText("");
 	    
 	   }
 	  });	  
-	       
-	   labelRomano2 = new JLabel("Nº.:"); 
-	   
+	        
 //	 Botão para converter para numeros Romano.
 	   botaoRomano = new JButton("Converter");
 	   botaoRomano.addActionListener(
 	   new ActionListener(){    
-	    public void actionPerformed (ActionEvent Evento){
-	    	String resul;  
-	    	   try{
-	    		   int num = Integer.parseInt(romanoTextField.getText());   
-	    		   resul = converter.numero(num);
-	    		   romanoResultadoTextField.setText(String.valueOf(resul));	   
-	    	   }
-	    	   catch (Exception e) {
-	    		   JOptionPane.showMessageDialog(null,"Caracter Invalido.");
-	    	   }    	
-	       }
-	    }
-	   );
+		   @Override
+			public void actionPerformed(ActionEvent Evento) {
+				String resul;  
+		    	   try{
+		    		   int num = Integer.parseInt(romanoTextField.getText());   
+		    		   resul = converter.numero(num);
+		    		   romanoResultadoTextField.setText(String.valueOf(resul));	   
+		    	   }
+		    	   catch (Exception e) {
+		    		   JOptionPane.showMessageDialog(null,"Caracter Invalido.");
+		    	   }    
+		   }
+	   });
 	   
-	   labelRomano1 = new JLabel("      Converter p/  Nº. ROMANO       ");   
+	   labelRomano1 = new JLabel("      Converter p/  Nº. ROMANO       ");  
+	   labelRomano2 = new JLabel("Nº.:"); 
 	   romanoTextField = new JTextField (3);
 	   labelRomano3 = new JLabel("Resultado");
 	   romanoResultadoTextField = new JTextField(10);
@@ -92,7 +90,7 @@ public class NumeroRomano extends JFrame{
 	    c.add (labelRomano3);
 	    c.add (romanoResultadoTextField);
 	    c.add (botaoLimpar);
-	    c.add (botaoVoltar);
+	    c.add (botaoSair);
 	    
 	    this.setVisible(true);
 	    
