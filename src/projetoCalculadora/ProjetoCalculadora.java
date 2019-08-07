@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 //import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
@@ -47,7 +50,20 @@ public class ProjetoCalculadora extends JFrame{
 	public ProjetoCalculadora(){
 	
 	this.setTitle("Projeto Calculadora");
-	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+// 
+	this.addWindowListener(new WindowAdapter() {
+
+			public void windowClosing(WindowEvent e) {
+				int x = JOptionPane.showConfirmDialog(null, "Deseja sair do programa?", "Close",
+						JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE);
+				if (x == JOptionPane.YES_NO_OPTION) {
+					e.getWindow().dispose();
+				}
+			}
+	});
+	
+	
     this.setResizable(false);
     this.setBounds(400,250,200,220);
     Container c = getContentPane();
@@ -93,6 +109,7 @@ public class ProjetoCalculadora extends JFrame{
 	        	  //ProjetoCalculadora.this.setVisible(false);
 	        	  
 	        	  NumeroRomano numeroRomano = new NumeroRomano();
+	        	  dispose();
 			}
 			});
 //Adicionar evento a itens de menu (Modulo - Tabuada)
@@ -103,7 +120,7 @@ public class ProjetoCalculadora extends JFrame{
 	    		   //ProjetoCalculadora.this.setVisible(false);
 	    		   
 	    		   Tabuada tabuadaOK = new Tabuada();
-	    		   
+	    		   dispose();
 	    		    
 	    	   }
 	       }
